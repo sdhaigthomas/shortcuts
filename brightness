@@ -1,0 +1,13 @@
+#!/bin/bash
+#pacman -S bc
+if [ "$EUID" -ne 0 ]
+    then echo "Please run with sudo or as root user!"
+    exit
+fi
+backlight="$(ls /sys/class/backlight/)"
+maxbright="$(cat /sys/class/backlight/$backlight/max_brightness)"
+echo "Pick a number, 0-$maxbright"
+read setto
+
+echo $setto > /sys/class/backlight/$backlight/brightness
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+iwctl device list
+echo Enter a Wifi Device Name, probably wlan0
+read wifidev
+iwctl station $wifidev scan
+iwctl station $wifidev get-networks
+echo Enter desired Network name, capitals matter!
+read networkname
+iwctl station $wifidev connect $networkname

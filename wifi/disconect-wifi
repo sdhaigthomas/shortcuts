@@ -1,0 +1,5 @@
+#!/bin/bash
+iwctl device list
+echo Enter a Wifi Device name, probalbly wlan0
+read wifidev
+iwctl station $wifidev disconnect
